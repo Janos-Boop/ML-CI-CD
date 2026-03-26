@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  fastapi-app:
+    build: .
+    container_name: ml-api-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis-db
+
+  redis-db:
+    image: redis:alpine
+    container_name: redis-cache
+    ports:
+      - "6379:6379"
